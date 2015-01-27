@@ -24,6 +24,10 @@ module Middleman
     option :month_template, nil, 'Template path (no template extension) for monthly archive pages. Defaults to the :calendar_template.'
     option :day_template, nil, 'Template path (no template extension) for daily archive pages. Defaults to the :calendar_template.'
     option :tag_template, nil, 'Template path (no template extension) for tag archive pages.'
+    option :generate_year_pages, true, 'Whether to generate year pages.'
+    option :generate_month_pages, true, 'Whether to generate month pages.'
+    option :generate_day_pages, true, 'Whether to generate day pages.'
+    option :generate_tag_pages, true, 'Whether to generate tag pages.'
     option :paginate, false, 'Whether to paginate lists of articles'
     option :per_page, 10, 'Number of articles per page when paginating'
     option :page_link, 'page/{num}', 'Path to append for additional pages when paginating'
@@ -86,7 +90,7 @@ module Middleman
     end
 
     def after_configuration
-      @name ||= :"blog#{@app.blog_instances.keys.length}"
+      @name ||= :"blog#{::Middleman::Blog.instances.keys.length}"
 
       # TODO: break up into private methods?
 
@@ -96,7 +100,7 @@ module Middleman
       @app.ignore(options.day_template) if options.day_template
       @app.ignore options.tag_template if options.tag_template
 
-      @app.blog_instances[@name] = self
+      ::Middleman::Blog.instances[@name] = self
 
       # Make sure ActiveSupport's TimeZone stuff has something to work with,
       # allowing people to set their desired time zone via Time.zone or

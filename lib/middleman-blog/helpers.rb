@@ -1,14 +1,26 @@
 module Middleman
   module Blog
+    def self.instances
+      @blog_instances ||= {}
+    end
+
+    def self.instances=(v)
+      @blog_instances = v
+    end
+
     # Blog-related helpers that are available to the Middleman application in +config.rb+ and in templates.
     module Helpers
+      def self.included(base)
+        ::Middleman::Blog.instances = {}
+      end
+
       # All the blog instances known to this Middleman app, keyed by name. A new blog is added
       # every time the blog extension is activated. Name them by setting the +:name+
       # option when activating - otherwise they get an automatic name like 'blog0', 'blog1', etc.
       #
       # @return [Hash<Symbol,BlogExtension>] a hash of all blog instances by name
       def blog_instances
-        @blog_instances ||= {}
+        ::Middleman::Blog.instances
       end
 
       # Retrieve a {BlogExtension} instance.
@@ -33,7 +45,7 @@ module Middleman
 
         # In multiblog situations, force people to specify the blog
         if !blog_name && blog_instances.size > 1
-          raise "You must either specify the blog name in calling this method or in your page frontmatter (using the 'blog' blog_name)"
+          raise "You have more than one blog so you must either use the flag --blog (ex. --blog 'myBlog') when calling this method, or add blog: [blog_name] to your page's frontmatter"
         end
 
         # Warn if a non-existent blog name provided
