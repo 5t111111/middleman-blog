@@ -1,10 +1,6 @@
 source 'https://rubygems.org'
 
-gem "middleman-cli", path: "~/Sites/middleman"
-gem "middleman-core", path: "~/Sites/middleman"
-
-# gem "middleman-cli", :github => "middleman/middleman", :branch => 'master'
-# gem "middleman-core", :github => "middleman/middleman", :branch => 'master'
+gem "middleman-core", :github => "middleman/middleman", :branch => 'v3-stable'
 
 # Specify your gem's dependencies in middleman-blog.gemspec
 gemspec
@@ -20,7 +16,7 @@ gem "rspec",    "~> 2.12"
 gem "simplecov"
 
 gem "timecop",  "~> 0.6.3"
-gem "oga"
+gem "nokogiri"
 gem "kramdown"
 
 # Code Quality
