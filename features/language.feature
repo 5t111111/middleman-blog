@@ -42,7 +42,7 @@ Feature: Internationalized articles
     When I go to "/index.html"
     Then I should see "Some text in English. All is OK."
     When I go to "/ru/index.html"
-    Then I should see "Некоторый текст на русском языке. Всё OK."
+    Then I should see "Некоторый текст на русском языке. Всё отлично."
 
   Scenario: Layout's locale match article's locale on article page
     Given a fixture app "language-app"
@@ -76,15 +76,3 @@ Feature: Internationalized articles
     Then I should see "Hello, world!"
     Then I should not see "Язык: ru"
     Then I should not see "Привет, мир!"
-
-  Scenario: Creating article with lang from CLI
-    Given a fixture app "language-app"
-    And a file named "config.rb" with:
-      """
-      activate :i18n
-      activate :blog, prefix: ":lang"
-      """
-    And I run `middleman article "My New Article" --date 2013-09-07 --lang ru`
-    Then the exit status should be 0
-    Then the following files should exist:
-      | source/ru/2013-09-07-my-new-article.html.markdown |

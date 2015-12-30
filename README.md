@@ -8,7 +8,7 @@ If you're just getting started, install the `middleman` gem and generate a new p
 
 ```
 gem install middleman
-middleman init MY_PROJECT
+middleman init MY_PROJECT --template=blog
 ```
 
 If you already have a Middleman project: Add `gem "middleman-blog"` to your `Gemfile` and run `bundle install`
@@ -27,11 +27,11 @@ Additionally, up-to-date generated code documentation is available on [RubyDoc].
 
 ## Build & Dependency Status
 
-[![Gem Version](https://badge.fury.io/rb/middleman-blog.png)][gem]
-[![Build Status](https://travis-ci.org/middleman/middleman-blog.png)][travis]
-[![Dependency Status](https://gemnasium.com/middleman/middleman-blog.png?travis)][gemnasium]
-[![Code Quality](https://codeclimate.com/github/middleman/middleman-blog.png)][codeclimate]
-[![Code Coverage](https://coveralls.io/repos/middleman/middleman-blog/badge.png?branch=master)][coveralls]
+[![Gem Version](https://badge.fury.io/rb/middleman-blog.svg)][gem]
+[![Build Status](https://travis-ci.org/middleman/middleman-blog.svg)][travis]
+[![Dependency Status](https://gemnasium.com/middleman/middleman-blog.svg?travis)][gemnasium]
+[![Code Quality](https://codeclimate.com/github/middleman/middleman-blog.svg)][codeclimate]
+[![Code Coverage](https://coveralls.io/repos/middleman/middleman-blog/badge.svg?branch=master)][coveralls]
 ## Community
 
 The official community forum is available at: http://forum.middlemanapp.com
